@@ -163,12 +163,20 @@ PROJECTS = [
      "PYTHON · PYMUPDF · PDFPLUMBER · MISTRAL · TESSERACT"),
     ("04", "princepatel.dev", ["A portfolio with a 3D avatar that", "listens and talks back, served", "from the edge."],
      "REACT · THREE.JS · WHISPER · CLOUDFLARE WORKERS"),
+    ("05", "Hospital MIS", ["Multi-tenant hospital system for India:", "doctor, nurse, billing and patient", "views on one shared record."],
+     "TYPESCRIPT · SUPABASE · POSTGRES RLS · VERCEL", "WITH PANDYAJEET · 39 OF 47 COMMITS"),
+    ("06", "Digital GR", ["Digitises Gujarati school admission", "registers by photo OCR or voice,", "reviewed and saved to the cloud."],
+     "NEXT.JS · TYPESCRIPT · SUPABASE · GUJARATI OCR", "WITH PANDYAJEET · 40 OF 47 COMMITS"),
+    ("07", "ShareAndWear", ["Community clothing exchange: list,", "rent or swap clothes, with requests", "and messaging between users."],
+     "HTML · CSS · JAVASCRIPT · FIREBASE", "TEAM OF 4"),
+    ("08", "Contributor", ["SuperBrowser · open-source upstream", "Elevated Pixels · design and dev site", "TechTonic 2025 · hackathon website"],
+     "COMMITS IN PANDYAJEET REPOSITORIES", "ALSO SHIPPED IN"),
 ]
 
 
-def card(num, name, desc, stack):
+def card(num, name, desc, stack, right="VIEW REPO"):
     d = Doc(620, 340)
-    frame(d, f"PROJECT {num}", "VIEW REPO")
+    frame(d, f"PROJECT {num}", right)
     d.text(num, 590 - 4, 300, 150, "anek", 800, 75, -2, "end",
            attrs=f'fill="none" stroke="{MUTE}" stroke-width="5" opacity=".45"')
     d.text(name, 38, 128, 64, "anek", 800, 75, -1, attrs=f'fill="{INK}"')
@@ -178,6 +186,14 @@ def card(num, name, desc, stack):
     d.raw(f'<path d="M40 286.5H580" stroke="{INK}"/>')
     d.text(stack, 40, 306, 10, "mono", 600, 100, 0.8, attrs=f'fill="{INK}"')
     d.save(f"p{num}.svg", "", name)
+
+
+def divider():
+    d = Doc(1280, 110)
+    frame(d, "SECTION 02", "CO-BUILT AND CONTRIBUTED")
+    d.raw(f'<rect x="40" y="70" width="7" height="7" fill="{SIGNAL}"/>')
+    d.text("Built with a team", 58, 88, 40, "anek", 700, 75, -0.5, attrs=f'fill="{INK}"')
+    d.save("team.svg", "", "Built with a team")
 
 
 def footer():
@@ -192,4 +208,5 @@ if __name__ == "__main__":
     hero()
     for p in PROJECTS:
         card(*p)
+    divider()
     footer()
