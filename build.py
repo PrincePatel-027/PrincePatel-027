@@ -167,11 +167,33 @@ PROJECTS = [
      "TYPESCRIPT · SUPABASE · POSTGRES RLS · VERCEL", "WITH PANDYAJEET · 39 OF 47 COMMITS"),
     ("06", "Digital GR", ["Digitises Gujarati school admission", "registers by photo OCR or voice,", "reviewed and saved to the cloud."],
      "NEXT.JS · TYPESCRIPT · SUPABASE · GUJARATI OCR", "WITH PANDYAJEET · 40 OF 47 COMMITS"),
-    ("07", "ShareAndWear", ["Community clothing exchange: list,", "rent or swap clothes, with requests", "and messaging between users."],
+    ("07", "NOESIS", ["AI learning platform: Gemini and RAG", "build learning modules from a team's", "own docs and codebase."],
+     "PYTHON · GEMINI · RAG · RENDER", "TEAM OF 3"),
+    ("08", "M.A.D", ["Multi-Agentic Debugger: four tiers of", "agents detect, triage and fix bugs", "in submitted source code."],
+     "PYTHON · GEMINI API · MULTI-AGENT · FLASK", "TEAM BUILD"),
+    ("09", "Emergency Ops", ["Disaster-response decision support:", "fuses conflicting field reports and", "routes scarce resources."],
+     "IBM BOB AI HACKATHON · OPEN TRACK", "HACKATHON · TEAM SHUTDOWN"),
+    ("10", "KrishiSahaytam", ["Scan a crop leaf and get a plant", "disease reading in real time,", "from the browser."],
+     "PYTHON · EDGE IMPULSE · COMPUTER VISION", "TEAM BUILD"),
+    ("11", "ShareAndWear", ["Community clothing exchange: list,", "rent or swap clothes, with requests", "and messaging between users."],
      "HTML · CSS · JAVASCRIPT · FIREBASE", "TEAM OF 4"),
-    ("08", "Contributor", ["SuperBrowser · open-source upstream", "Elevated Pixels · design and dev site", "TechTonic 2025 · hackathon website"],
+    ("12", "Contributor", ["SuperBrowser · open-source upstream", "Elevated Pixels · co-founded studio", "TechTonic 2025 · hackathon website"],
      "COMMITS IN PANDYAJEET REPOSITORIES", "ALSO SHIPPED IN"),
 ]
+
+CONTACTS = [
+    ("web", "PORTFOLIO", "princepatel.dev"),
+    ("in", "LINKEDIN", "in/princepatel2706"),
+    ("mail", "EMAIL", "princepatelgg27@gmail.com"),
+]
+
+
+def contact(key, label, value):
+    d = Doc(420, 120)
+    frame(d, label, "OPEN")
+    d.text(value, 40, 92, 26, "anek", 700, 85, 0, attrs=f'fill="{INK}"')
+    d.raw(f'<rect x="40" y="102" width="28" height="4" fill="{SIGNAL}"/>')
+    d.save(f"c-{key}.svg", "", f"{label}: {value}")
 
 
 def card(num, name, desc, stack, right="VIEW REPO"):
@@ -190,7 +212,7 @@ def card(num, name, desc, stack, right="VIEW REPO"):
 
 def divider():
     d = Doc(1280, 110)
-    frame(d, "SECTION 02", "CO-BUILT AND CONTRIBUTED")
+    frame(d, "SECTION 02", "CO-BUILT · HACKATHONS · CONTRIBUTIONS")
     d.raw(f'<rect x="40" y="70" width="7" height="7" fill="{SIGNAL}"/>')
     d.text("Built with a team", 58, 88, 40, "anek", 700, 75, -0.5, attrs=f'fill="{INK}"')
     d.save("team.svg", "", "Built with a team")
@@ -209,4 +231,6 @@ if __name__ == "__main__":
     for p in PROJECTS:
         card(*p)
     divider()
+    for c in CONTACTS:
+        contact(*c)
     footer()
